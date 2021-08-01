@@ -10,8 +10,8 @@ function register(user) {
   })
   .then(res => {
     if (res.ok) return res.json();
-    // Probably a duplicate email
-    throw new Error('Email already taken!');
+    // Probably a duplicate username
+    throw new Error('Username already taken!');
   })
   .then(({ token }) => setToken(token));
 }
