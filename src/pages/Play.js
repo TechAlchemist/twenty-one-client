@@ -139,7 +139,7 @@ function Play({ user, handleLogout }) {
         
         if (winner.trim() === 'Computer wins!' || winner === 'Draw') gameStatus = 'loss';
         else gameStatus = 'won';
-        if (gameStatus !== '') fetch(`https://twenty-one-api.herokuapp.com/${user._id}?gameWon=${gameStatus}`, {method: 'POST'});
+        if (gameStatus !== '') fetch(`https://twenty-one-api.herokuapp.com/leaderboard/updateScore/${user._id}?gameWon=${gameStatus}`, {method: 'POST'});
     }
 
     const gameControls = 
