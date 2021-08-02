@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
 
 body {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Barlow', sans-serif;
+    background-color: #3c2e3b;
+}
+
+#auth-logo {
+    width: 300px;
 }
 
 .splash {
@@ -51,8 +56,44 @@ a.nav-link.active {
 button {
     background-color: #0a262d !important;
     color: white !important;
+    margin: 5px;
 }
 
 button:hover {
     border-color: white;
 }
+
+#play-button {
+    padding: 20px;
+    font-size: 2em;
+}
+
+#login-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#gameboard-divider {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 25px;
+    background-image: linear-gradient(#b967ba, #95ade9, #c3505c) !important;
+}
+
+@media only screen and (max-width: 600px) {
+    #card {
+        width: 100px;
+    }
+  }
+
+  

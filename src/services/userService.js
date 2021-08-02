@@ -1,6 +1,6 @@
 import {setToken, getUserFromToken, removeToken} from './tokens';
 
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'https://twenty-one-api.herokuapp.com/';
 
 function register(user) {
   return fetch(BASE_URL + 'register', {
@@ -10,8 +10,8 @@ function register(user) {
   })
   .then(res => {
     if (res.ok) return res.json();
-    // Probably a duplicate email
-    throw new Error('Email already taken!');
+    // Probably a duplicate username
+    throw new Error('Username already taken!');
   })
   .then(({ token }) => setToken(token));
 }
