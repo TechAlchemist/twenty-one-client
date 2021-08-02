@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Navigation from "../components/Navigation";
 import ProfileInfo from "../components/ProfileInfo";
 
-function Profile({ user }) {
+function Profile({ user, handleLogout }) {
 
     var params = useParams();
     const profileURL = `http://localhost:8080/getUser/${params.userId}`
@@ -25,7 +25,7 @@ function Profile({ user }) {
 
     return (
         <>
-            <Navigation active={"profile"} user={user} />
+            <Navigation active={"profile"} user={user} handleLogout={handleLogout} />
             <div class="container">
                 <div class="h-100 p-5 bg-light border rounded-3">
                     <ProfileInfo profile={profileState} />

@@ -1,7 +1,6 @@
 import React from 'react';
 
 function ProfileInfo({ profile }) {
-    console.log(profile)
     return (
         <div>
                 <h1 className="display-4"> { profile && profile.firstName + ' ' + profile.lastName } </h1>

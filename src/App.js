@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Play from './pages/Play';
+import Leaderboard from './pages/Leaderboard';
 // --components
 import NotFound from './components/NotFound';
 // styling
@@ -33,8 +34,9 @@ function App(props) {
         <Route exact path='/' render={(props) => <Home user={userState.user} handleLogout={handleLogout} /> } />
         <Route exact path='/register' render={(props) => <Register handleRegisterOrLogin={handleRegisterOrLogin} /> } />
         <Route exact path='/login' render={(props) => <Login handleRegisterOrLogin={handleRegisterOrLogin} /> } />
-        <Route exact path='/play' render={(props) => <Play user={userState.user} /> } />
-        <Route exact path='/profile/:userId' render={(props) => <Profile user={userState.user} /> } />
+        <Route exact path='/play' render={(props) => <Play user={userState.user} handleLogout={handleLogout} /> } />
+        <Route exact path='/profile/:userId' render={(props) => <Profile user={userState.user} handleLogout={handleLogout} /> } />
+        <Route exact path='/leaderboard' render={(props) => <Leaderboard user={userState.user} handleLogout={handleLogout} /> } />
         <Route component={NotFound} />
       </Switch>
     </>

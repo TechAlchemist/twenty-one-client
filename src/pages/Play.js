@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
 
-function Play({ user }) {
+function Play({ user, handleLogout }) {
 
     const deckURL = 'https://deckofcardsapi.com/api/deck/new/draw/?count=52';
 
@@ -154,7 +154,7 @@ function Play({ user }) {
 
     return (
         <>
-            <Navigation user={user} />
+            <Navigation user={user} handleLogout={handleLogout}/>
                 <div className="alert alert-dark" role="alert" id="game-over" style={{display: 'none'}}>
                     <div className="text-center">
 

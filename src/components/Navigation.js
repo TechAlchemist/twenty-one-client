@@ -27,7 +27,7 @@ function Navigation({ active, user, handleLogout }) {
                     <Link to={`/profile/${user._id}`} className={active === "profile" ? "nav-link active" : "nav-link"} href="/login"> {user.username} </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="" className="nav-link" href="/login" onClick={handleLogout}>Logout</Link>
+                    <Link to="" className="nav-link" onClick={handleLogout}>Logout</Link>
                   </li>
                 </>
                 :
