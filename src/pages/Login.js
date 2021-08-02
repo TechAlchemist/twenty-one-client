@@ -30,7 +30,7 @@ function Login(props) {
         if(!formValid()) return;  // make sure form is valid
         try {
             await login(formState)
-            props.handleSignupOrLogin();
+            props.handleRegisterOrLogin();
         } catch (error) {
             alert(error.message);
         }
@@ -46,7 +46,7 @@ function Login(props) {
             <div className="login-wrapper">
                 <div className="container py-4">
                     <div className="container py-4" id="login-image">
-                        <h1 className="display-1"> Login </h1>
+                        <h1 className="display-1 text-white"> Login </h1>
                         <img className="img-fluid rounded" src={LoginIcon} alt="Alien Space Ship Icon" width="300" /> 
                     </div>
                     <div className="pb-3 mb-4 border-bottom">

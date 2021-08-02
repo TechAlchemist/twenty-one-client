@@ -94,7 +94,9 @@ function Play({ user }) {
     function determineWinner() {
         // **important** this can happen if you draw 2 aces
         // TODO: Allow Aces to count as 11 or 1
-        const playerName = user || "Player 1"; 
+        var playerName;
+        if (user) playerName = user.username;
+        else playerName = "Player 1";
 
         if (computerHandValue > 21 && playerHandValue > 21) {
             return 'Draw';
@@ -137,7 +139,7 @@ function Play({ user }) {
         // TODO: Add ability to record draws.
         var gameStatus = '';
         if (!user) return;
-        console.log('LINE 149: winner: ' + winner)
+        
         if (winner.trim() === 'Computer wins!' || winner === 'Draw') gameStatus = 'loss';
         else gameStatus = 'won';
         console.log(gameStatus)

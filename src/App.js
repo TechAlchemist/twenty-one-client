@@ -16,7 +16,7 @@ function App(props) {
 
   const [userState, setUserState] = useState({ user: getUser() });
 
-  function handleSignupOrLogin() {
+  function handleRegisterOrLogin() {
     setUserState({ user: getUser() });
     props.history.push('/');
   }
@@ -31,8 +31,8 @@ function App(props) {
     <>
       <Switch>
         <Route exact path='/' render={(props) => <Home user={userState.user} handleLogout={handleLogout} /> } />
-        <Route exact path='/register' render={(props) => <Register handleSignupOrLogin={handleSignupOrLogin} /> } />
-        <Route exact path='/login' render={(props) => <Login handleSignupOrLogin={handleSignupOrLogin} /> } />
+        <Route exact path='/register' render={(props) => <Register handleRegisterOrLogin={handleRegisterOrLogin} /> } />
+        <Route exact path='/login' render={(props) => <Login handleRegisterOrLogin={handleRegisterOrLogin} /> } />
         <Route exact path='/play' render={(props) => <Play user={userState.user} /> } />
         <Route exact path='/profile/:userId' render={(props) => <Profile user={userState.user} /> } />
         <Route component={NotFound} />
