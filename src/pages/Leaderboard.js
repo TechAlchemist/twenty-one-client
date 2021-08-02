@@ -12,7 +12,7 @@ function Leaderboard({ user, handleLogout }) {
         }
     });
 
-    const leaderboardURL = 'http://localhost:8080/leaderboard/getLeaderboard';
+    const leaderboardURL = 'https://twenty-one-api.herokuapp.com/leaderboard/getLeaderboard';
 
     const [leaderboardState, setLeaderboardState] = useState();
 

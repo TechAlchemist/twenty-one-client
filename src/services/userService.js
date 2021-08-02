@@ -1,6 +1,6 @@
 import {setToken, getUserFromToken, removeToken} from './tokens';
 
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'https://twenty-one-api.herokuapp.com/';
 
 function register(user) {
   return fetch(BASE_URL + 'register', {

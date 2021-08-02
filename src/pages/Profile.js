@@ -6,7 +6,7 @@ import ProfileInfo from "../components/ProfileInfo";
 function Profile({ user, handleLogout }) {
 
     var params = useParams();
-    const profileURL = `http://localhost:8080/getUser/${params.userId}`
+    const profileURL = `https://twenty-one-api.herokuapp.com/getUser/${params.userId}`
 
     useEffect(() => {
         document.body.style.backgroundImage = "linear-gradient(to right, #c3505c, #b967ba)";

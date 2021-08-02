@@ -11,17 +11,17 @@ function Play({ user, handleLogout }) {
     const [gameState, setGameState] = useState({
         gameStarted: false
     })
-
+    // eslint-disable-next-line
     const [computerHand, setComputerHandState] = useState({
         hand: [],
     });
 
     let [computerHandValue, setComputerHandValue] = useState(0);
-
+    // eslint-disable-next-line
     const [playerHand, setPlayerHandState] = useState({
         hand: [],
     });
-
+    // eslint-disable-next-line
     let [playerHandValue, setPlayerHandValue] = useState(0);
 
     useEffect(() => {
@@ -41,15 +41,12 @@ function Play({ user, handleLogout }) {
         computerHand.hand.forEach(card => {
             if (card.value === "ACE") {
                 setComputerHandValue(computerHandValue+=11)
-                // computerHand.handValue += 11;
             }
             else if (card.value === "JACK" || card.value === "QUEEN" || card.value === "KING") {
                 setComputerHandValue(computerHandValue+=10)
-                // computerHand.handValue += 10;
             }
             else {
                 setComputerHandValue(computerHandValue+=parseInt(card.value))
-                // computerHand.handValue += parseInt(card.value);
             }
             
         });
@@ -159,7 +156,8 @@ function Play({ user, handleLogout }) {
                     <div className="text-center">
 
                     <h1 className="display-1">Game Over!</h1>
-                    <h2 className="display-2" id="winner"></h2>
+                    {/* // eslint-disable-next-line */}
+                    <h2 className="display-2" id="winner">s</h2>
                     <br />
                     <button className="btn" id="play-button" onClick={playAgain}> Play Again? </button>
                     <Link to="/"> <button className="btn" id="play-button"> Home </button> </Link>
@@ -220,10 +218,6 @@ function Play({ user, handleLogout }) {
                 </div>
 
             </div>
-
-
-
-            
         </>
     );
 }
