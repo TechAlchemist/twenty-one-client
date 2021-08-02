@@ -55,11 +55,8 @@ function Play({ user }) {
         });
     }
 
-    function calculatePlayerHandWorth() { 
-     
-        console.log(playerHandValue)
+    function calculatePlayerHandWorth() {  
         setPlayerHandValue(playerHandValue = 0);   
-        console.log(playerHandValue)
         playerHand.hand.forEach(card => {
             if (card.value === "ACE") {
                 setPlayerHandValue(playerHandValue += 11);
@@ -95,31 +92,24 @@ function Play({ user }) {
     }
 
     function determineWinner() {
+        // **important** this can happen if you draw 2 aces
+        // TODO: Allow Aces to count as 11 or 1
+        const playerName = user || "Player 1"; 
+
         if (computerHandValue > 21 && playerHandValue > 21) {
             return 'Draw';
         }
-        else if (computerHandValue < 21 && playerHandValue > 21) {
-            return "Computer"
-        }
-        else if (computerHandValue < 21 && playerHandValue === 21) {
-            return "Player";
-        }
-        else if (playerHandValue < 21 && computerHandValue === 21) {
+        else if ((computerHandValue <= 21 && playerHandValue < 21 && computerHandValue > playerHandValue) || (computerHandValue <= 21 && playerHandValue > 21)) {
             return "Computer";
         }
-        else if (computerHandValue < 21 && computerHandValue > playerHandValue) {
-            return "Computer";
-        }
-        else if (playerHandValue < 21 && computerHandValue < 21 && playerHandValue > computerHandValue) {
-            return "Player";
-        }
-        else if (playerHandValue < 21 && computerHandValue < 21 && computerHandValue > playerHandValue) {
-            return "Computer";
+        else if ((playerHandValue <= 21 && computerHandValue < 21 && playerHandValue > computerHandValue) || (playerHandValue <= 21 && computerHandValue > 21)) {
+            return playerName;
         }
         else if (playerHandValue === computerHandValue) {
             return "Draw";
         }
         else {
+            console.log('player hand: ' + playerHandValue + '   computerHandValue: ' + computerHandValue)
             alert('Oh no, something went horribly terribly wrong.');
         }
     }
@@ -134,6 +124,7 @@ function Play({ user }) {
         if (winner === 'Draw') winnerTitle.innerHTML = "Draw!";
         else winnerTitle.innerHTML = winner += " wins!";
         gameOver.style.display = 'block';
+        if (user) recordGame(winner);
     }
 
 
@@ -141,7 +132,17 @@ function Play({ user }) {
         window.location.reload();
     }
 
-
+    async function recordGame(winner) {
+        // **important** API only handles wins and losses. 
+        // TODO: Add ability to record draws.
+        var gameStatus = '';
+        if (!user) return;
+        console.log('LINE 149: winner: ' + winner)
+        if (winner.trim() === 'Computer wins!' || winner === 'Draw') gameStatus = 'loss';
+        else gameStatus = 'won';
+        console.log(gameStatus)
+        if (gameStatus !== '') fetch(`http://localhost:8080/leaderboard/updateScore/${user._id}?gameWon=${gameStatus}`, {method: 'POST'});
+    }
 
     const gameControls = 
     <> 
@@ -174,7 +175,7 @@ function Play({ user }) {
                         <div className="computer-cards">
                             {computerHand.hand && computerHand.hand.map((card, idx) => 
                                 <>
-                                    <img src={card.image} className="img-fluid" key={idx} id="card" />
+                                    <img src={card.image} className="img-fluid" key={idx} id="card"alt="Playing card." />
                                 </>
                             )}
                         </div>
@@ -201,7 +202,7 @@ function Play({ user }) {
                             {
                                 playerHand.hand && playerHand.hand.map((card, idx) => 
                                     <>
-                                        <img src={card.image} className="img-fluid" key={idx} id="card" />
+                                        <img src={card.image} className="img-fluid" key={idx} id="card" alt="Playing card."/>
                                     </>
                                 )
                             }
