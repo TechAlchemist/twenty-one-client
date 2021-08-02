@@ -2,6 +2,10 @@
 
 This is a React project for a Hiring Hackathon. The clients purpose is to create a simple version of the card game Blackjack.
 
+
+https://hackajack-twenty-one.herokuapp.com/
+
+
 ---
 
 Technologies used in this React include:
